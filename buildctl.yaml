@@ -1,0 +1,35 @@
+package:
+  name: buildctl
+  version: 0.10.6
+  epoch: 0
+  description: buildkit CLI
+  target-architecture:
+    - all
+  copyright:
+    - license: Apache-2.0
+      paths:
+        - "*"
+  dependencies:
+    runtime:
+      - ca-certificates-bundle
+
+environment:
+  contents:
+    repositories:
+      - https://dl-cdn.alpinelinux.org/alpine/edge/main
+      - https://dl-cdn.alpinelinux.org/alpine/edge/community
+      - https://dl-cdn.alpinelinux.org/alpine/edge/testing
+    packages:
+      - busybox
+      - ca-certificates-bundle
+      - go
+
+pipeline:
+  - uses: fetch
+    with:
+      uri: https://github.com/moby/buildkit/archive/refs/tags/v${{package.version}}.tar.gz
+      expected-sha256: 5ffe5a2d11736719649dae962461f66df394ae4cc1e58294e5f2bd4d4632d9d0
+  - runs: |
+      CGO_ENABLED=0 go build \
+        -trimpath \
+        -o "${{targets.destdir}}/usr/bin/buildctl" ./cmd/buildctl
