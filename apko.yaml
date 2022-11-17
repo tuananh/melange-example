@@ -5,7 +5,7 @@ contents:
   packages:
     - alpine-baselayout-data
     - bash
-    # - buildctl@local
+    - buildctl@local
     - cosign@local
 
 accounts:
@@ -19,7 +19,7 @@ accounts:
   run-as: 65532
 
 entrypoint:
-  command: /usr/bin/sh
+  command: /usr/bin/cosign
 
 cmd: help
 
