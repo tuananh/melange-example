@@ -6,7 +6,7 @@ Just an example of building base images, used for DevOps pipelines.
 ## Usage
 
 - Start the dev container using `chainguard-images/sdk`.
-- Generate keygen for `melange` to sign the packages.
+- Generate keygen for `melange` to sign the packages. This will generate `melange.rsa` and `melange.rsa.pub`.
 - Build the package(s).
 - Build the image with `apko`.
 
