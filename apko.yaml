@@ -1,10 +1,9 @@
 contents:
   repositories:
     - https://dl-cdn.alpinelinux.org/alpine/edge/main
-    - '@local /home/anh/Code/devops-tools/packages/'
+    - '@local ./packages/'
   packages:
     - alpine-baselayout-data
-    - bash
     - buildctl@local
     - cosign@local
 
